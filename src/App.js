@@ -2,6 +2,7 @@ import { Box, makeStyles } from '@material-ui/core'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import Portfolio from './portfolio'
 import Bio from './bio'
+import Contact from './contact'
 
 const tabNames = [
   { text: 'armando gonzalez', link: '' },
@@ -51,7 +52,9 @@ function App() {
           <Route path="/portfolio">
             <Portfolio />
           </Route>
-          <Route path="/contact">Contact</Route>
+          <Route path="/contact">
+            <Contact />
+          </Route>
           <Route path="/bio">
             <Bio />
           </Route>
