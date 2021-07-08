@@ -1,11 +1,13 @@
 import { Box, makeStyles } from '@material-ui/core'
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import Portfolio from './portfolio'
+import Bio from './bio'
 
 const tabNames = [
-  'armando gonzalez',
-  'portfolio',
-  'contact',
-  'bio',
-  'my dogs bio',
+  { text: 'armando gonzalez', link: '' },
+  { text: 'portfolio', link: '/portfolio' },
+  { text: 'contact', link: '/contact' },
+  { text: 'bio', link: '/bio' },
 ]
 
 const useStyles = makeStyles({
@@ -33,21 +35,34 @@ function App() {
   const classes = useStyles()
 
   return (
-    <Box className={classes.container}>
-      {tabNames.map((item) => {
-        return (
-          <Box
-            className={classes.headerElement}
-            onClick={() => {
-              console.log(item)
-            }}
-          >
-            {item}
-          </Box>
-        )
-      })}
+    <Box>
+      <Router>
+        <Box className={classes.container}>
+          {tabNames.map(({ text, link }) => {
+            return (
+              <Box className={classes.headerElement}>
+                <Link to={link}>{text}</Link>
+              </Box>
+            )
+          })}
+        </Box>
+
+        <Switch>
+          <Route path="/portfolio">
+            <Portfolio />
+          </Route>
+          <Route path="/contact">Contact</Route>
+          <Route path="/bio">
+            <Bio />
+          </Route>
+        </Switch>
+      </Router>
     </Box>
   )
 }
 
 export default App
+
+// return (
+
+// )
